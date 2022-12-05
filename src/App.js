@@ -1,9 +1,12 @@
-import './App.css';
+import "./App.css";
+import Header from "../src/components/Header.jsx";
+import ReviewsList from "../src/components/ReviewsList.jsx";
 
 function App() {
   return (
     <div className="App">
-      <header>Hello</header>
+      <Header />
+      <ReviewsList />
     </div>
   );
 }
