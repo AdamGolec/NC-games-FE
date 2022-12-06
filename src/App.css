@@ -7,12 +7,50 @@ html {
   background-color: #3a6b91;
   text-align: center;
 }
+.header {
+  position: fixed;
+  background-color: #3a6b91;
+  padding: 0px;
+  text-align: center;
+  width: 100%;
+}
+.loading {
+  margin: 100px;
+}
+
+
+/* NavBar */
+.nav-bar {
+  background-color: lightblue;
+  display: block;
+  position: sticky;
+  top: 37px;
+  padding: 10px;
+}
+.nav-bar li {
+  width: 25%;
+  display: inline-block;
+  font-size: 24px;
+}
+.nav-bar li a {
+  text-decoration: none;
+  color: black;
+}
+/* RviewsList */
+.reviews-list a{
+  text-decoration: none;
+  color: black;
+}
 
 .reviews-list__single-review {
   max-width: 300px;
   border-top: 3px double black;
   list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+  color: black;
 }
+
 .reviews-list__single-review img {
   max-width: 300px;
   max-height: 250px;
@@ -21,38 +59,39 @@ html {
   height: 150px;
   object-fit: cover;
 }
+.reviews-list__single-review h3 {
+  padding: 10px 0;
+  min-height: 44px;
+}
 .reviews-list__review-text {
   text-overflow: ellipsis;
   width: 90%;
   white-space: nowrap;
   overflow: hidden;
 }
-.reviews-list__single-review h3 {
-  padding: 10px 0;
-
-  min-height: 44px;
-}
-.reviews-list__single-review {
-  padding: 5px;
-  margin: 5px;
+/* Review */
+.review {
+  margin: 50px 300px;
 }
 
+.review_img {
+  max-width: 500px;
+}
+
+.review__body_p {
+  margin: 50px;
+}
 /* Media Queries */
 @media only screen and (min-width: 601px) {
-
   .reviews-list {
     padding: 12px 30px;
-    margin: 0 50px;
+    margin: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
   .reviews-list p {
     max-width: 280px;
-  }
-
-  .navBar {
-    background-color: lightblue;
   }
 }
 
@@ -71,4 +110,16 @@ html {
   .navBar {
     background-color: #37393db4;
   }
+}
+
+/* pseudo classes */
+
+nav p:hover {
+  text-decoration: underline;
+  padding: 0 5px 0 0;
+}
+
+.reviews-list__single-review:hover {
+  position: relative;
+  top: -4px;
 }
