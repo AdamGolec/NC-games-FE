@@ -1,9 +1,14 @@
-import './App.css';
+import "./App.css";
+import Header from "../src/components/Header.jsx";
+import ReviewsList from "../src/components/ReviewsList.jsx";
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <div className="App">
-      <header>Hello</header>
+      <Header />
+      <Nav />
+      <ReviewsList />
     </div>
   );
 }
