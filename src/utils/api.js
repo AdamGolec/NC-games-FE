@@ -7,7 +7,6 @@ const myApi = axios.create({
 
 export const getReviews = () => {
   return myApi.get("/reviews").then((res) => {
-    console.log(res.data.review);
     return res.data.review;
   });
 };
@@ -21,5 +20,23 @@ export const getReviewById = (review_id) => {
 export const getComments = (review_id) => {
   return myApi.get(`/reviews/${review_id}/comments`).then((res) => {
     return res.data.comments;
+  });
+};
+
+export const patchUpVote = (review_id) => {
+  const patchBody = {
+    inc_votes: 1,
+  };
+  return myApi.patch(`/reviews/${review_id}`, patchBody).then((res) => {
+    return res.data
+  });
+};
+
+export const patchDownVote = (review_id) => {
+  const patchBody = {
+    inc_votes: -1,
+  };
+  return myApi.patch(`/reviews/${review_id}`, patchBody).then((res) => {
+    return res.data
   });
 };

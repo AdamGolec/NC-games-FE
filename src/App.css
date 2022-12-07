@@ -22,7 +22,7 @@ html {
 
 /* NavBar */
 .nav-bar {
-  background-color: lightblue;
+  background-color: #5199a7;
   display: block;
   position: sticky;
   top: 37px;
@@ -80,7 +80,10 @@ html {
   color: black;
 }
 
-
+.review p {
+  margin: 5px;
+  padding: 5px;
+}
 
 .review_img {
   max-width: 300px;
@@ -94,6 +97,18 @@ html {
 .review__body_p {
   margin: 50px;
 }
+.review__like-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.review__like-button{
+width: 40px;
+}
+.review__dislike-button{
+  width: 40px;
+}
+
 
 /* CommentsList */
 
@@ -105,7 +120,7 @@ html {
   text-align: center;
   padding: 20px;
   margin: 10px;
-  background-color: lightblue;
+  background-color: #5199a7;
 }
 
 .comments-list__votes {
@@ -128,16 +143,13 @@ html {
 
 @media only screen and (max-width: 600px) {
   body {
-    background-color: lightblue;
+    background-color: #5199a7;
   }
   .review{
   max-width: 300px;
     
   }
-  .review p {
-    margin: 5px;
-    padding: 5px;
-  }
+  
 
   .reviews-list {
     padding: 12px 30px;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getReviewById } from "../utils/api";
+import { getReviewById, patchDownVote, patchUpVote } from "../utils/api";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
 
@@ -26,6 +26,39 @@ function Review() {
     }
     return `Show ${review.comment_count} comments`;
   }
+  const handleUpVote = (review_id) => {
+    setReview((currReview) => {
+      if (currReview.review_id === review_id) {
+        return { ...currReview, votes: currReview.votes + 1 };
+      }
+      return currReview;
+    });
+    patchUpVote(review_id).catch((err) => {
+      setReview((currReview) => {
+        if (currReview.review_id === review_id) {
+          return { ...currReview, votes: currReview.votes - 1 };
+        }
+        return currReview;
+      });
+    });
+  };
+
+  const handleDownVote = (review_id) => {
+    setReview((currReview) => {
+      if (currReview.review_id === review_id) {
+        return { ...currReview, votes: currReview.votes - 1 };
+      }
+      return currReview;
+    });
+    patchDownVote(review_id).catch((err) => {
+      setReview((currReview) => {
+        if (currReview.review_id === review_id) {
+          return { ...currReview, votes: currReview.votes + 1 };
+        }
+        return currReview;
+      });
+    });
+  };
 
   return loading ? (
     <p className="loading">...Loading...</p>
@@ -39,7 +72,21 @@ function Review() {
       />
       <p className="review__body_p">{review.review_body}</p>
       <p>Posted by {review.owner}</p>
-      <p>{review.votes} likes</p>
+      <div className="review__like-container">
+        <button
+          className="review__like-button"
+          onClick={() => handleUpVote(review.review_id)}
+        >
+          👍
+        </button>
+        <p>{review.votes} likes</p>
+        <button
+          className="review__dislike-button"
+          onClick={() => handleDownVote(review.review_id)}
+        >
+          👎
+        </button>
+      </div>
       <p
         className="comments-list__show-comments"
         onClick={() => {

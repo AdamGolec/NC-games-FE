@@ -14,7 +14,6 @@ function Comments() {
     });
   }, [review_id]);
 
-  console.log(comments);
 
   return loading ? (
     <p className="loading">...Loading...</p>
