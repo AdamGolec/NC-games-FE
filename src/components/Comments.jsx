@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { getComments } from "../utils/api.js";
 import { useParams } from "react-router-dom";
+import AddComment from "./AddComment.jsx";
 
 function Comments() {
   const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState([true]);
+  const [loading, setLoading] = useState(true);
   const { review_id } = useParams();
 
   useEffect(() => {
@@ -14,10 +15,11 @@ function Comments() {
     });
   }, [review_id]);
 
-
   return loading ? (
     <p className="loading">...Loading...</p>
   ) : (
+    <>
+      <AddComment review_id={review_id} setComments={setComments} />
       <ul className="comments-list">
         {comments.map((comment) => {
           return (
@@ -32,6 +34,7 @@ function Comments() {
           );
         })}
       </ul>
+    </>
   );
 }
 

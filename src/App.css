@@ -73,7 +73,6 @@ html {
 /* Review */
 .review {
   max-width: 50%;
-
   list-style-type: none;
   padding: 5px;
   margin: 65px auto;
@@ -97,22 +96,27 @@ html {
 .review__body_p {
   margin: 50px;
 }
-.review__like-container{
+.review__like-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.review__like-button{
-width: 40px;
-}
-.review__dislike-button{
+.review__like-button {
   width: 40px;
 }
-
+.review__dislike-button {
+  width: 40px;
+}
+.review__show-comments {text-align: center;
+max-width: 150px;
+margin: auto;
+margin-top: 10px;
+margin-bottom: 10px;
+}
 
 /* CommentsList */
 
-.comments-list__single-comment h3{
+.comments-list__single-comment h3 {
   border-bottom: 2px solid black;
 }
 .comments-list__single-comment {
@@ -139,17 +143,22 @@ width: 40px;
   .reviews-list p {
     max-width: 280px;
   }
+  .review_img {
+    max-width: 700px;
+    max-height: 450px;
+    float: none;
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   body {
     background-color: #5199a7;
   }
-  .review{
-  max-width: 300px;
-    
+  .review {
+    max-width: 300px;
   }
-  
 
   .reviews-list {
     padding: 12px 30px;
@@ -161,11 +170,9 @@ width: 40px;
   .navBar {
     background-color: #37393db4;
   }
-.comments-list__single-comment {
-  padding: 0;
-}
-
-
+  .comments-list__single-comment {
+    padding: 0;
+  }
 }
 
 /* pseudo classes */
@@ -180,7 +187,7 @@ nav p:hover {
   top: -4px;
 }
 
-.comments-list__show-comments:hover {
+.review__show-comments:hover {
   text-decoration: underline;
   cursor: pointer;
 }

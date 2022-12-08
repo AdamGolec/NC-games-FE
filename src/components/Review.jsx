@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import Comments from "./Comments";
 
 function Review() {
+  const [showVote, setShowVote] = useState(true);
   const [showComments, setShowComments] = useState(false);
-
+  const [voteStatus, setVoteStatus] = useState("");
   const [review, setReview] = useState({});
-  const [loading, setLoading] = useState([true]);
+  const [loading, setLoading] = useState(true);
   const { review_id } = useParams();
 
   useEffect(() => {
@@ -18,11 +19,13 @@ function Review() {
   }, [review_id]);
 
   function showOnClick() {
-    setShowComments(true);
+    setShowComments((current) => !current);
   }
   function commentsTxt() {
     if (review.comment_count === 0) {
       return "There are no comments yet.";
+    } else if (review.comment_count === 1) {
+      return `Show ${review.comment_count} comment`;
     }
     return `Show ${review.comment_count} comments`;
   }
@@ -33,6 +36,8 @@ function Review() {
       }
       return currReview;
     });
+    setShowVote(false);
+    setVoteStatus("Thanks for voting!");
     patchUpVote(review_id).catch((err) => {
       setReview((currReview) => {
         if (currReview.review_id === review_id) {
@@ -40,6 +45,8 @@ function Review() {
         }
         return currReview;
       });
+      setVoteStatus("Voting failed!");
+      setShowVote(true);
     });
   };
 
@@ -50,6 +57,8 @@ function Review() {
       }
       return currReview;
     });
+    setShowVote(false);
+    setVoteStatus("Thanks for voting!");
     patchDownVote(review_id).catch((err) => {
       setReview((currReview) => {
         if (currReview.review_id === review_id) {
@@ -57,6 +66,8 @@ function Review() {
         }
         return currReview;
       });
+      setVoteStatus("Voting failed!");
+      setShowVote(true);
     });
   };
 
@@ -73,29 +84,38 @@ function Review() {
       <p className="review__body_p">{review.review_body}</p>
       <p>Posted by {review.owner}</p>
       <div className="review__like-container">
-        <button
-          className="review__like-button"
-          onClick={() => handleUpVote(review.review_id)}
-        >
-          👍
-        </button>
+        {showVote && (
+          <button
+            className="review__like-button"
+            onClick={() => handleUpVote(review.review_id)}
+          >
+            👍
+          </button>
+        )}
         <p>{review.votes} likes</p>
-        <button
-          className="review__dislike-button"
-          onClick={() => handleDownVote(review.review_id)}
-        >
-          👎
-        </button>
+        <div>{voteStatus}</div>
+        {showVote && (
+          <button
+            className="review__dislike-button"
+            onClick={() => handleDownVote(review.review_id)}
+          >
+            👎
+          </button>
+        )}
       </div>
-      <p
-        className="comments-list__show-comments"
+      <div
+        className="review__show-comments"
         onClick={() => {
           showOnClick();
         }}
       >
         {commentsTxt()}
-      </p>
-      {showComments && <Comments />}
+      </div>
+      {showComments && (
+        <>
+          <Comments review_id={review_id} />
+        </>
+      )}
     </main>
   );
 }
