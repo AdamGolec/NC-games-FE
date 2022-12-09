@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
 import { useParams } from "react-router-dom";
+import { getComments } from "../utils/api.js";
 
 const AddComment = (props) => {
   const [newComment, setNewComment] = useState("");
@@ -8,29 +9,25 @@ const AddComment = (props) => {
   const [postStatus, setPostStatus] = useState("");
   const [showStatus, setShowStatus] = useState(true);
   const { review_id } = useParams();
-  const {setComments} = props
+  const { setComments } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     postComment(newComment, username, review_id)
-      .then((commentData) => {
-        setNewComment((currComments) => {
-          const newComments = [...currComments];
-          newComments.push(commentData);
-          return newComments;
-          
-        });
+      .then(() => {
         setPostStatus("Thanks for posting your comment!");
         setShowStatus(false);
+        getComments(review_id).then((commentData) => {
+          setComments(commentData);
+        });
       })
       .catch((error) => {
         setPostStatus(
           "Something went wrong :( Make sure you're using existing Username"
         );
       });
-      
-    };
+  };
 
   return (
     <>

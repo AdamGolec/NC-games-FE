@@ -25,9 +25,7 @@ function ReviewsList() {
               <img src={review.review_img_url} alt={review.title} />
               <p className="reviews-list__review-text">{review.review_body}</p>
               <p>Posted by: {review.owner}</p>
-              <p>
-                {review.votes} likes
-              </p>
+              <p>{review.votes} likes</p>
             </li>
           </Link>
         );

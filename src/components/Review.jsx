@@ -24,26 +24,18 @@ function Review() {
   function commentsTxt() {
     if (review.comment_count === 0) {
       return "There are no comments yet.";
-    } else if (review.comment_count === 1) {
-      return `Show ${review.comment_count} comment`;
     }
     return `Show ${review.comment_count} comments`;
   }
   const handleUpVote = (review_id) => {
     setReview((currReview) => {
-      if (currReview.review_id === review_id) {
-        return { ...currReview, votes: currReview.votes + 1 };
-      }
-      return currReview;
+      return { ...currReview, votes: currReview.votes + 1 };
     });
     setShowVote(false);
     setVoteStatus("Thanks for voting!");
     patchUpVote(review_id).catch((err) => {
       setReview((currReview) => {
-        if (currReview.review_id === review_id) {
-          return { ...currReview, votes: currReview.votes - 1 };
-        }
-        return currReview;
+        return { ...currReview, votes: currReview.votes - 1 };
       });
       setVoteStatus("Voting failed!");
       setShowVote(true);
@@ -52,19 +44,13 @@ function Review() {
 
   const handleDownVote = (review_id) => {
     setReview((currReview) => {
-      if (currReview.review_id === review_id) {
-        return { ...currReview, votes: currReview.votes - 1 };
-      }
-      return currReview;
+      return { ...currReview, votes: currReview.votes - 1 };
     });
     setShowVote(false);
     setVoteStatus("Thanks for voting!");
     patchDownVote(review_id).catch((err) => {
       setReview((currReview) => {
-        if (currReview.review_id === review_id) {
-          return { ...currReview, votes: currReview.votes + 1 };
-        }
-        return currReview;
+        return { ...currReview, votes: currReview.votes + 1 };
       });
       setVoteStatus("Voting failed!");
       setShowVote(true);
@@ -92,8 +78,8 @@ function Review() {
             👍
           </button>
         )}
-        <p>{review.votes} likes</p>
         <div>{voteStatus}</div>
+        <p>{review.votes} likes</p>
         {showVote && (
           <button
             className="review__dislike-button"
@@ -102,14 +88,14 @@ function Review() {
             👎
           </button>
         )}
-      </div>
-      <div
-        className="review__show-comments"
-        onClick={() => {
-          showOnClick();
-        }}
-      >
-        {commentsTxt()}
+        <div
+          className="review__show-comments"
+          onClick={() => {
+            showOnClick();
+          }}
+        >
+          {commentsTxt()}
+        </div>
       </div>
       {showComments && (
         <>
