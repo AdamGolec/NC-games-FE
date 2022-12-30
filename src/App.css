@@ -27,6 +27,7 @@ html {
   position: sticky;
   top: 37px;
   padding: 10px;
+  margin-bottom: 10px;
 }
 .nav-bar li {
   width: 35%;
