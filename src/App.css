@@ -3,15 +3,16 @@
   padding: 0;
   text-decoration: none;
   list-style-type: none;
+  color: #fff;
 }
-
 html {
-  background-color: #3a6b91;
+  background-color: #2f332f;
+
   text-align: center;
 }
 .header {
   position: fixed;
-  background-color: #3a6b91;
+  background-color: #225277;
   padding: 0px;
   text-align: center;
   width: 100%;
@@ -23,7 +24,7 @@ html {
 
 /* NavBar */
 .nav-bar {
-  background-color: #5199a7;
+  background-color: #3a6b91;
   display: block;
   position: sticky;
   top: 37px;
@@ -50,8 +51,8 @@ html {
   height: 30px;
   border: 1px solid #999;
   font-size: 18px;
-  color: #1c87c9;
-  background-color: #eee;
+  color: #fff;
+  background-color: #464946;
   border-radius: 5px;
 }
 
@@ -201,7 +202,7 @@ html {
 
 @media only screen and (max-width: 700px) {
   body {
-    background-color: #5199a7;
+  background-color: #2f332f;
   }
   .review {
     max-width: 300px;
