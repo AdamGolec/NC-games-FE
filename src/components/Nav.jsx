@@ -11,12 +11,14 @@ function Nav({
   filterSortBy,
   setFilterSortBy,
 }) {
-  console.log(filterSortBy, "nav");
-  console.log(filterOrderBy);
-
   return (
     <nav className="nav-bar">
       <ul>
+        <li>
+          <Link to="/reviews" onClick={() => setFilterCategory("all")}>
+            <p>Reviews</p>
+          </Link>
+        </li>
         <li>
           <Categories
             filterCategory={filterCategory}
@@ -34,11 +36,6 @@ function Nav({
             filterSortBy={filterSortBy}
             setFilterSortBy={setFilterSortBy}
           />
-        </li>
-        <li>
-          <Link to="/reviews" onClick={() => setFilterCategory('all')}>
-            <p>Reviews</p>
-          </Link>
         </li>
       </ul>
     </nav>

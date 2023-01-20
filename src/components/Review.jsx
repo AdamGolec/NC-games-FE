@@ -61,7 +61,7 @@ function Review() {
     <p className="loading">...Loading...</p>
   ) : (
     <main className="review">
-      <h3>{review.title}</h3>
+      <h2>{review.title}</h2>
       <img
         src={review.review_img_url}
         alt="Review cover"
@@ -78,7 +78,6 @@ function Review() {
             👍
           </button>
         )}
-        <div>{voteStatus}</div>
         <p>{review.votes} likes</p>
         {showVote && (
           <button
@@ -88,15 +87,17 @@ function Review() {
             👎
           </button>
         )}
-        <div
-          className="review__show-comments"
-          onClick={() => {
-            showOnClick();
-          }}
-        >
-          {commentsTxt()}
-        </div>
       </div>
+      <div>{voteStatus}</div>
+      <div
+        className="review__show-comments"
+        onClick={() => {
+          showOnClick();
+        }}
+      >
+        {commentsTxt()}
+      </div>
+
       {showComments && (
         <>
           <Comments review_id={review_id} />

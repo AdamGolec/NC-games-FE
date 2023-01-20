@@ -20,7 +20,6 @@ function ReviewsList({
     setSearchParams({ category: filterCategory });
     setLoading(true);
     getReviews().then((reviewsList) => {
-      console.log(reviewsList);
       setReviewsList(() => {
         return reviewsList
           .filter(
@@ -62,7 +61,7 @@ function ReviewsList({
                 key={review.review_id}
                 className="reviews-list__single-review"
               >
-                <h3>{review.title}</h3>
+                <h2>{review.title}</h2>
                 <img src={review.review_img_url} alt={review.title} />
                 <p className="reviews-list__review-text">
                   {review.review_body}
