@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const myApi = axios.create({
-  baseURL: "https://lazy-lime-prawn-gear.cyclic.app/api",
+  baseURL: "https://nc-games-n925.onrender.com/api",
 });
 
 export const getReviews = () => {
